@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="zh-CN" class="no-js">
+
+<head>
+    <meta charset="utf-8">
+    <title>{$sub_title|default=""}{:config('db_data.BLOG_NAME')} | {:config('db_data.BLOG_SUBTITLE')}</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="renderer" content="webkit">
+    <meta name="keywords" content="{:config('db_data.BLOG_KEYWORDS')}" />
+    <meta name="description" content="{:config('db_data.BLOG_DESCRIPTION')}" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="icon" type="image/png" href="/favicon.ico">
+    <meta name="apple-mobile-web-app-title" content="{:config('db_data.BLOG_NAME')}" />
+    <link rel="stylesheet" href="//cdn.amazeui.org/amazeui/2.7.2/css/amazeui.min.css" />
+    <link href="__CSS__/index.css" rel="stylesheet">
+    <!--[if (gte IE 9)|!(IE)]><!-->
+    <script src="//cdn.bootcss.com/jquery/2.2.3/jquery.min.js"></script>
+    <!--<![endif]-->
+    <!--[if lte IE 8 ]>
+        <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+        <script src="//cdn.bootcss.com/modernizr/2.8.3/modernizr.min.js"></script>
+        <script src="//cdn.amazeui.org/amazeui/2.7.2/js/amazeui.ie8polyfill.min.js"></script>
+    <![endif]-->
+    <script src="//cdn.amazeui.org/amazeui/2.7.2/js/amazeui.min.js"></script>
+</head>
+
+<body>
+    <!--[if lte IE 9 ]>
+    <div class="am-alert am-alert-danger ie-warning" data-am-alert>
+        <button type="button" class="am-close">&times;</button>
+        <div class="am-container">
+            <a href="http://browsehappy.com/" target="_blank">{:config('db_data.BLOG_STR_LOW_BROWSE_ALERT_MSG')}</a>
+        </div>
+    </div>
+    <![endif]-->
+    <header class="am-topbar">
+        <div class="am-g am-g-fixed blog-g-fixed">
+            <h1 class="am-topbar-brand "><a href="/" title="{:config('db_data.BLOG_NAME')}">{:config('db_data.BLOG_NAME')}</a></h1>
+            <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only" data-am-collapse="{target: '#topbar-collapse'}">
+                <span class="am-sr-only">导航切换</span> <span class="am-icon-bars"></span>
+            </button>
+            <div class="am-collapse am-topbar-collapse" id="topbar-collapse">
+                <ul class="am-nav am-nav-pills am-topbar-nav font-thin">
+                    <!-- 导航条项开始 -->
+                    <li class="am-active"><a href="/" title="首页">首页</a></li>
+                    <!-- 导航条项结束 -->
+                </ul>
+                <form class="am-topbar-form am-topbar-left am-form-inline am-topbar-right" id="formSearch" role="search" method="get" action="javascript:;">
+                    <div class="am-input-group">
+                        <input type="text" class=" am-form-field am-input-sm" name="keyword" placeholder="请输入关键字……" required>
+                        <span class="am-input-group-btn">
+                            <button type="submit" class="am-btn am-btn-default am-btn-sm"><span class="am-icon-search"></span></button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </header>
+    <div class="am-g am-g-fixed blog-g-fixed">
+        <div class="am-u-md-9">
+            {__CONTENT__}
+        </div>
+        <div class="am-u-md-3 blog-sidebar">
+            <section class="am-panel am-panel-secondary">
+                <div class="am-panel-hd"><i class="am-icon-info-circle font-thin">{:config('db_data.BLOG_STR_ABOUT')}</i></div>
+                <div class="am-panel-bd font-thin" style="font-size:13px;">
+                    <p>三咲智子，姓名不详，性别不详，会诸多编程语言(才怪嘞！)，苦逼学生党一枚~<br>搞IT，不搞基，博客仍在施工中~
+                    <a href="#" class="am-btn am-btn-secondary am-btn-sm am-fr am-radius am-icon-ellipsis-h" onclick="alert('Coding...');"> 更多</a></p>
+                </div>
+            </section>
+            <section class="am-panel am-panel-success">
+                <div class="am-panel-hd font-thin"><i class="am-icon-link">{:config('db_data.BLOG_STR_FRIENDLY_LINK')}</i></div>
+                <div class="am-panel-bd blog-links">
+                    <ui class="am-avg-sm-1 am-avg-md-2">
+                        <li><a class="am-btn am-btn-secondary am-radius" href="http://bbs.125.la/" target="_blank" title="精易论坛">精易论坛</a></li>
+                        <li><a class="am-btn am-btn-secondary am-radius" href="http://sxyz.blog/blog" target="_blank" title="三咲亚子">三咲亚子</a></li>
+                        <li><a class="am-btn am-btn-secondary am-radius" href="http://www.loadfield.com/" target="_blank" title="负荷领域">负荷领域</a></li>
+                        <li><a class="am-btn am-btn-secondary am-radius" href="http://www.bilibili.com/" target="_blank" title="哔哩哔哩">B站</a></li>
+                    </ui>
+                </div>
+            </section>
+        </div>
+    </div>
+    <footer class="blog-footer">
+        <p>{:config('db_data.BLOG_NAME')}</p>
+        <p><small>Copyright &copy; {:get_domain()} 版权所有.</small></p>
+        {:config('db_data.BLOG_BUTTOM_CUSTOM_HTML')} 
+    </footer>
+    <script type="text/javascript">
+    var duoshuoQuery = {
+        short_name: "{:config('db_data.DUOSHUO_SHORT_NAME')}"
+    };
+    $(function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';
+        ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+
+        var formSearch = $('#formSearch');
+        formSearch.submit(function() {
+            alert('(ﾟДﾟ≡ﾟдﾟ)!? 什么！尼要搜索？俺还没有开发！');
+            return false;
+        });
+    });
+    </script>
+</body>
+
+</html>

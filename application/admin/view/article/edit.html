@@ -1,0 +1,49 @@
+{extend name="base"} {block name="subTitle"}编辑文章{/block} {block name="dataType"}articleEdit{/block} {block name="css"}
+<link rel="stylesheet" href="/static/editor.md/css/editormd.min.css" />{/block} {block name="js"}
+<script src="/static/editor.md/editormd.min.js"></script>{/block} {block name="content"}
+<div class="tpl-content-wrapper">
+    <div class="row-content am-cf">
+        <div class="row">
+            <div class="am-u-sm-12 am-u-md-12 am-u-lg-12">
+                <div class="widget am-cf">
+                    <div class="widget-head am-cf">
+                        <div class="widget-title am-cf">文章{eq name="action" value="save"}添加 <small>Create{else/}编辑 <small>Edit{/eq} </small></div>
+                    </div>
+                    <div class="widget-body am-fr">
+                        <form id="formEditArticle" class="am-form am-form-horizontal" data-action="{$action}">
+                            <div class="am-form-group">
+                                <label for="inputTitle" class="am-u-sm-1 am-form-label">标题：</label>
+                                <div class="am-u-sm-11">
+                                    <input type="text" id="inputTitle" placeholder="请输入文章标题" required>
+                                </div>
+                            </div>
+                            <div class="am-form-group">
+                                <label for="inputAlias" class="am-u-sm-1 am-form-label">别名：</label>
+                                <div class="am-u-sm-11">
+                                    <div class="am-input-group">
+                                        <span class="am-input-group-label">{:url('/article/', null, null, true)}</span>
+                                        <input type="text" id="inputAlias" placeholder="设置一个别名吧（可空）" class="am-form-field">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="am-form-group">
+                                <label for="inputContent" class="am-u-sm-1 am-form-label">内容：</label>
+                                <div class="am-u-sm-11">
+                                    <div id="editormdContent">
+                                        <textarea name="content" style="display:none;">{$markdown|default=''}</textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="am-form-group">
+                                <div class="am-u-sm-12 am-text-right">
+                                    <button id="btnSubmit" type="submit" class="am-btn am-btn-primary am-btn-lg" data-am-loading="{spinner: 'circle-o-notch', loadingText: '提交中...'}">提交</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}

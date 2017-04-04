@@ -1,0 +1,22 @@
+{extend name="base"} {block name="nav"}{/block} {block name="sidebar"}{/block} {block name="subTitle"}后台登录{/block} {block name="dataType"}login{/block} {block name="content"}
+<div class="tpl-login">
+    <div class="tpl-login-content">
+        <div class="tpl-login-logo"></div>
+        <form class="am-form tpl-form-line-form" id="formLogin">
+            <div class="am-form-group">
+                <input type="text" class="tpl-form-input" id="inputAccount" placeholder="请输入账号" required autofocus>
+            </div>
+            <div class="am-form-group">
+                <input type="password" class="tpl-form-input" id="inputPwd" placeholder="请输入密码" required>
+            </div>
+            <div class="am-form-group tpl-login-remember-me">
+                <input id="remember-me" type="checkbox" checked>
+                <label for="remember-me">记住密码</label>
+            </div>
+            <div class="am-form-group">
+                <button type="submit" id="btnLogin" class="am-btn am-btn-primary am-btn-block tpl-btn-bg-color-success tpl-login-btn" data-am-loading="{spinner: 'circle-o-notch', loadingText: '登录中...'}">登录</button>
+            </div>
+        </form>
+    </div>
+</div>
+{/block}

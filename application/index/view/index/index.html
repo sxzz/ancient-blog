@@ -1,0 +1,41 @@
+{layout name="layout_index"} {foreach name="articles" item="v"}
+<article class="am-panel am-panel-secondary blog-list-main">
+    <h3 class="am-article-title blog-list-title font-thin"><a href="{:url('index/index/article', ['id'=>$v['id']])}">{$v.title}</a></h3>
+    <div class="am-g">
+        <div class="am-u-sm-12">
+            <div class="blog-list-content">{$v.markdown|strip_tags|msubstr=0,100|nl2p}</div>
+            <div class="article-meta">
+                {eq name="v.top" value="1"}
+                <li>
+                    <span class="am-badge am-badge-danger am-radius am-text-lg am-icon-level-up"> 置顶</span>
+                </li>
+                {/eq}
+                <li>
+                    <i class="am-icon-calendar"> {$v.time|date='Y-m-d',###}</i>
+                </li>
+                <li>
+                    <i class="am-icon-eye"> {$v.views}</i>
+                </li>
+                <li>
+                    <i class="am-icon-comments"> <span class="ds-thread-count" data-thread-key="{$v.id}"></span></i>
+                </li>
+            </div>
+            <div class="blog-list-action am-hide-sm-only">
+                <a href="{:url('/article/' . $v['id'])}" class="am-btn am-btn-secondary am-fr am-btn-sm blog-list-read-more font-thin am-icon-ellipsis-h"> 阅读全文</a>
+            </div>
+        </div>
+    </div>
+</article>
+{/foreach}
+<ul class="am-pagination blog-list-pagination font-thin">
+    <li class="am-pagination-prev"><a href="javascript:;">« 上一页</a></li>
+    <li class="am-pagination-next"><a href="javascript:;">下一页 »</a></li>
+</ul>
+<script>
+$(function() {
+    $('.am-pagination-prev, .am-pagination-next').click(function() {
+        alert("不用翻页惹，俺还没有开发呢~");
+        return false;
+    });
+});
+</script>

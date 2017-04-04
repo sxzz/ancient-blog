@@ -1,0 +1,66 @@
+{extend name="base"} {block name="subTitle"}文章管理{/block} {block name="dataType"}article{/block} {block name="content"}
+<div class="tpl-content-wrapper">
+    <div class="row-content am-cf">
+        <div class="row">
+            <div class="am-u-sm-12 am-u-md-12 am-u-lg-12">
+                <div class="widget am-cf">
+                    <div class="widget-head am-cf">
+                        <div class="widget-title am-cf">文章管理 <small>Article</small></div>
+                    </div>
+                    <div class="widget-body am-fr">
+                        <div class="am-u-sm-12 am-u-md-6 am-u-lg-6">
+                            <div class="am-form-group">
+                                <div class="am-btn-toolbar">
+                                    <div class="am-btn-group am-btn-group-xs">
+                                        <a href="/admin/article/create" class="am-btn am-btn-primary"><span class="am-icon-plus"></span> 发表文章</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="am-u-sm-12">
+                            <div class="am-scrollable-horizontal">
+                                <table class="am-table am-table-compact am-table-striped am-text-nowrap tpl-table-black">
+                                    <thead>
+                                        <tr>
+                                            <th>文章标题</th>
+                                            <th>分类</th>
+                                            <th>查看数 / 评论数</th>
+                                            <th>发表时间</th>
+                                            <th>操作</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {foreach name="articles" item="v"}
+                                        <tr>
+                                            <td class="am-text-middle">
+                                                <a href="{:url('admin/article/read',['id'=>$v['id']])}" target="_blank">{$v.title}</a> {eq name="v.top" value="1"}
+                                                <span class="am-badge am-badge-primary am-radius am-fr am-text-default">置顶</span> {/eq}
+                                            </td>
+                                            <td>N/A</td>
+                                            <td class="am-text-middle">{$v.views} / <span class="ds-thread-count" data-thread-key="{$v.id}"></span></td>
+                                            <td class="am-text-middle">{$v.time|date='Y-m-d H:i:s',###}</td>
+                                            <td class="am-text-middle">
+                                                <div class="am-btn-group">
+                                                    <a href="{:url('admin/article/edit',['id'=>$v['id']])}" class="am-btn am-btn-secondary am-btn-xs am-round am-icon-pencil"> 编辑</a>
+                                                    <button type="button" id="btnArticleDelete" class="am-btn am-btn-danger am-btn-xs am-round am-icon-trash" data-id="{$v.id}"> 删除</button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        {/foreach}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="am-u-lg-12 am-cf">
+                            <div class="am-fr">
+                                <ul class="am-pagination tpl-pagination">
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}

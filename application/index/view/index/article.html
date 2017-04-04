@@ -1,0 +1,60 @@
+{layout name="layout_index"}
+<script src="/static/editor.md/lib/marked.min.js"></script>
+<script src="/static/editor.md/lib/prettify.min.js"></script>
+<script src="/static/editor.md/lib/raphael.min.js"></script>
+<script src="/static/editor.md/lib/underscore.min.js"></script>
+<script src="/static/editor.md/lib/sequence-diagram.min.js"></script>
+<script src="/static/editor.md/lib/flowchart.min.js"></script>
+<script src="/static/editor.md/lib/jquery.flowchart.min.js"></script>
+<script src="/static/editor.md/editormd.min.js"></script>
+<section class="am-panel am-panel-secondary">
+    <div class="am-panel-bd">
+        <h1 class="am-article-title article-title">
+            <a href="{:url('/article/' . $article['id'])}" title="{$article.title}">{$article.title}</a>
+        </h1>
+        <span class="article-meta">
+            <li><i class="am-icon-calendar"> {$article.time|date='Y-m-d',###}</i></li>
+            <li><i class="am-icon-eye"> {$article.views}</i></li>
+            <li><i class="am-icon-commenting-o"> <span class="ds-thread-count" data-thread-key="{$article.id}"></span></i>
+        </li>
+        <hr>
+        </span>
+        <div class="article-content" id="viewContent">
+            <textarea style="display:none;">{$article.markdown}</textarea>
+        </div>
+        <!-- <div class="ds-thread" data-thread-key="{$article.id}" data-title="{$article.title}"></div> -->
+    </div>
+</section>
+<script>
+$(function() {
+    article_links = $('.article-content a');
+    article_links.each(function(index, el) {
+        el = $(el);
+        if (!el.attr('target')) {
+            el.attr("target", "_blank");
+        }
+    });
+    editormd.emoji = {
+            path: "/static/editor.md/emojis/",
+            ext: ".png"
+        },
+        editormd.twemoji = {
+            path: "http://twemoji.maxcdn.com/72x72/",
+            ext: ".png"
+        };
+    var view = editormd.markdownToHTML('viewContent', {
+        htmlDecode: true,
+        toc: true,
+        tocm: true, // Using [TOCM]
+        gfm: true,
+        tocDropdown: true,
+        markdownSourceCode: false, // 是否保留 Markdown 源码，即是否删除保存源码的 Textarea 标签
+        emoji: true,
+        taskList: true,
+        tex: true, // 默认不解析
+        flowChart: true, // 默认不解析
+        sequenceDiagram: true, // 默认不解析
+
+    });
+});
+</script>

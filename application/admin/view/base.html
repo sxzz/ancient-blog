@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <title>{block name='subTitle'}后台{/block} - 博客后台管理</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta content="webkit" name="renderer">
+    <meta content="no-siteapp" http-equiv="Cache-Control" />
+    <!-- <link rel="icon" type="image/png" href="assets/i/favicon.png"> -->
+    <!-- <link rel="apple-touch-icon-precomposed" href="assets/i/app-icon72x72@2x.png"> -->
+    <meta content="博客后台管理" name="apple-mobile-web-app-title" />
+    <link rel="stylesheet" href="//cdn.amazeui.org/amazeui/2.7.2/css/amazeui.min.css">
+    <link rel="stylesheet" href="__CSS__/loading.css">
+    <link rel="stylesheet" href="__CSS__/admin/app.css"> {block name="css"} {/block}
+</head>
+
+<body data-type="{block name='dataType'}{/block}">
+    <div class="am-g tpl-g">
+        {block name="nav"}
+        <header>
+            <!-- logo -->
+            <div class="am-fl tpl-header-logo">
+                <a href="/admin"><img alt="后台管理" src="/static/img/logo.png"></a>
+            </div>
+            <!-- 右侧内容 -->
+            <div class="tpl-header-fluid">
+                <!-- 侧边切换 -->
+                <div class="am-fl tpl-header-switch-button am-icon-list">
+                </div>
+                <!-- 其它功能-->
+                <div class="am-fr tpl-header-navbar">
+                    <ul>
+                        <!-- 欢迎语 -->
+                        <li class="am-text-sm tpl-header-navbar-welcome">
+                            <a href="javascript:;">欢迎你，<span>{:config('db_data.ADMIN_ACCOUNT')}</span></a>
+                        </li>
+                        <!-- 退出 -->
+                        <li class="am-text-sm">
+                            <a href="javascript:;"><span class="am-icon-sign-out"></span> 退出</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+        {/block}
+        <!-- 风格切换 -->
+        <div class="tpl-skiner">
+            <div class="tpl-skiner-toggle am-icon-cog">
+            </div>
+            <div class="tpl-skiner-content">
+                <div class="tpl-skiner-content-title">选择主题</div>
+                <div class="tpl-skiner-content-bar">
+                    <span class="skiner-color skiner-white" data-color="theme-white">
+                        </span>
+                    <span class="skiner-color skiner-black" data-color="theme-black">
+                        </span>
+                </div>
+            </div>
+        </div>
+        {block name="sidebar"}
+        <div class="left-sidebar">
+            <!-- 用户信息 -->
+            <div class="tpl-sidebar-user-panel">
+                <div class="tpl-user-panel-slide-toggleable am-text-center">
+                    <div class="tpl-user-panel-profile-picture">
+                        <img class="am-circle" alt="头像" src="/static/img/head.jpg"></img>
+                    </div>
+                    <span class="user-panel-logged-in-text">
+                        <i class="am-icon-circle-o am-text-success tpl-user-panel-status-icon"></i> {:config('db_data.ADMIN_ACCOUNT')}
+                    </span>
+                </div>
+            </div>
+            <!-- 菜单 -->
+            <ul class="sidebar-nav">
+                <li class="sidebar-nav-link" data-action="index">
+                    <a href="/admin">
+                        <i class="am-icon-home sidebar-nav-link-logo"></i> 首页
+                    </a>
+                </li>
+                <li class="sidebar-nav-heading">Article<span class="sidebar-nav-heading-info">文章</span></li>
+                <li class="sidebar-nav-link" data-action="article,article_edit">
+                    <a href="/admin/article">
+                        <i class="am-icon-edit sidebar-nav-link-logo"></i> 文章管理
+                    </a>
+                </li>
+            </ul>
+        </div>
+        {/block} {block name="content"}{/block}
+    </div>
+    <!-- loading动画 -->
+    <div class="colorful_loading_frame">
+        <div class="colorful_loading">
+            <i class="rect1"></i>
+            <i class="rect2"></i>
+            <i class="rect3"></i>
+            <i class="rect4"></i>
+            <i class="rect5"></i>
+        </div>
+    </div>
+    <script src="//cdn.bootcss.com/jquery/2.2.3/jquery.min.js"></script>
+    <script src="//cdn.bootcss.com/layer/3.0.1/layer.min.js"></script>
+    <script src="//cdn.amazeui.org/amazeui/2.7.2/js/amazeui.min.js"></script>
+    <script src="__JS__/admin/theme.js"></script>
+    <script src="__JS__/admin/app.js"></script>
+    {block name="js"} {/block}
+    <script>
+    // 多说的id
+    var duoshuoQuery = {
+        short_name: "{:config('db_data.DUOSHUO_SHORT_NAME')}"
+    };
+    </script>
+</body>
+
+</html>
