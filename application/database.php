@@ -13,25 +13,25 @@ return [
     // 数据库类型
     'type'            => 'mysql',
     // 服务器地址
-    'hostname'        => '127.0.0.1',
+    'hostname'        => think\Env::get('database.hostname'),
     // 数据库名
-    'database'        => 'blog',
+    'database'        => think\Env::get('database.database'),
     // 用户名
-    'username'        => 'root',
+    'username'        => think\Env::get('database.username'),
     // 密码
-    'password'        => '123456',
+    'password'        => think\Env::get('database.password'),
     // 端口
-    'hostport'        => '',
+    'hostport'        => think\Env::get('database.port'),
     // 连接dsn
     'dsn'             => '',
     // 数据库连接参数
     'params'          => [],
     // 数据库编码默认采用utf8
-    'charset'         => 'utf8',
+    'charset'         => think\Env::get('database.charset'),
     // 数据库表前缀
     'prefix'          => '',
     // 数据库调试模式
-    'debug'           => true,
+    'debug'           => think\Env::get('database.debug'),
     // 数据库部署方式:0 集中式(单一服务器),1 分布式(主从服务器)
     'deploy'          => 0,
     // 数据库读写是否分离 主从式有效
