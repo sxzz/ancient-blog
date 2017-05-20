@@ -22,7 +22,8 @@
     background-clip: padding-box;
     cursor: pointer;
 }
-.am-switch.am-round{
+
+.am-switch.am-round {
     border-radius: 20px;
 }
 
@@ -46,7 +47,8 @@
     -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, .4);
     box-shadow: 0 2px 5px rgba(0, 0, 0, .4);
 }
-.am-switch.am-round .am-switch-handle{
+
+.am-switch.am-round .am-switch-handle {
     border-radius: 16px;
 }
 
@@ -102,11 +104,15 @@
     -webkit-transform: translate(16px, 0);
     transform: translate(16px, 0);
 }
+
+
 /*theme*/
-.am-switch.am-active,.am-switch-default.am-active {
+
+.am-switch.am-active, .am-switch-default.am-active {
     border-color: #0e90d2;
     background-color: #0e90d2;
 }
+
 .am-switch-primary.am-active {
     border: 2px solid #0e90d2;
     background-color: #0e90d2;

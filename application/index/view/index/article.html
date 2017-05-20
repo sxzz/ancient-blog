@@ -1,12 +1,4 @@
-{layout name="layout_index"}
-<script src="/static/editor.md/lib/marked.min.js"></script>
-<script src="/static/editor.md/lib/prettify.min.js"></script>
-<script src="/static/editor.md/lib/raphael.min.js"></script>
-<script src="/static/editor.md/lib/underscore.min.js"></script>
-<script src="/static/editor.md/lib/sequence-diagram.min.js"></script>
-<script src="/static/editor.md/lib/flowchart.min.js"></script>
-<script src="/static/editor.md/lib/jquery.flowchart.min.js"></script>
-<script src="/static/editor.md/editormd.min.js"></script>
+{extend name="base"} {block name="content"}
 <section class="am-panel am-panel-secondary">
     <div class="am-panel-bd">
         <h1 class="am-article-title article-title">
@@ -15,16 +7,24 @@
         <span class="article-meta">
             <li><i class="am-icon-calendar"> {$article.time|date='Y-m-d',###}</i></li>
             <li><i class="am-icon-eye"> {$article.views}</i></li>
-            <li><i class="am-icon-commenting-o"> <span class="ds-thread-count" data-thread-key="{$article.id}"></span></i>
+            <li><i class="am-icon-commenting-o"> No</i>
         </li>
         <hr>
         </span>
         <div class="article-content" id="viewContent">
             <textarea style="display:none;">{$article.markdown}</textarea>
         </div>
-        <!-- <div class="ds-thread" data-thread-key="{$article.id}" data-title="{$article.title}"></div> -->
     </div>
 </section>
+{/block} {block name="js"}
+<script src="__STATIC__/editor.md/lib/marked.min.js"></script>
+<script src="__STATIC__/editor.md/lib/prettify.min.js"></script>
+<script src="__STATIC__/editor.md/lib/raphael.min.js"></script>
+<script src="__STATIC__/editor.md/lib/underscore.min.js"></script>
+<script src="__STATIC__/editor.md/lib/sequence-diagram.min.js"></script>
+<script src="__STATIC__/editor.md/lib/flowchart.min.js"></script>
+<script src="__STATIC__/editor.md/lib/jquery.flowchart.min.js"></script>
+<script src="__STATIC__/editor.md/editormd.min.js"></script>
 <script>
 $(function() {
     article_links = $('.article-content a');
@@ -34,8 +34,9 @@ $(function() {
             el.attr("target", "_blank");
         }
     });
+    
     editormd.emoji = {
-            path: "/static/editor.md/emojis/",
+            path: "__STATIC__/editor.md/emojis/",
             ext: ".png"
         },
         editormd.twemoji = {
@@ -58,3 +59,4 @@ $(function() {
     });
 });
 </script>
+{/block}

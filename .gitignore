@@ -3,6 +3,5 @@ composer.lock
 *.log
 thinkphp
 runtime
-admin_tpl
 archive
 .debug

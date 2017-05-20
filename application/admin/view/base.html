@@ -12,7 +12,6 @@
     <!-- <link rel="apple-touch-icon-precomposed" href="assets/i/app-icon72x72@2x.png"> -->
     <meta content="博客后台管理" name="apple-mobile-web-app-title" />
     <link rel="stylesheet" href="//cdn.amazeui.org/amazeui/2.7.2/css/amazeui.min.css">
-    <link rel="stylesheet" href="__CSS__/loading.css">
     <link rel="stylesheet" href="__CSS__/admin/app.css"> {block name="css"} {/block}
 </head>
 
@@ -89,27 +88,12 @@
         </div>
         {/block} {block name="content"}{/block}
     </div>
-    <!-- loading动画 -->
-    <div class="colorful_loading_frame">
-        <div class="colorful_loading">
-            <i class="rect1"></i>
-            <i class="rect2"></i>
-            <i class="rect3"></i>
-            <i class="rect4"></i>
-            <i class="rect5"></i>
-        </div>
-    </div>
     <script src="//cdn.bootcss.com/jquery/2.2.3/jquery.min.js"></script>
     <script src="//cdn.bootcss.com/layer/3.0.1/layer.min.js"></script>
     <script src="//cdn.amazeui.org/amazeui/2.7.2/js/amazeui.min.js"></script>
     <script src="__JS__/admin/theme.js"></script>
     <script src="__JS__/admin/app.js"></script>
     {block name="js"} {/block}
-    <script>
-    // 多说的id
-    var duoshuoQuery = {
-        short_name: "{:config('db_data.DUOSHUO_SHORT_NAME')}"
-    };
     </script>
 </body>
 

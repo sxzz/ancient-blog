@@ -41,7 +41,6 @@ var pageData = {
     login: function() {
         $('#formLogin').submit(function() {
             $('#btnLogin').button('loading');
-            loading(true);
             $.ajax({
                 url: '/admin/login/ajax_login',
                 type: 'POST',
@@ -70,20 +69,17 @@ var pageData = {
                 resultError();
             }).always(function() {
                 $('#btnLogin').button('reset');
-                loading(false);
             });
             return false;
         });
     },
     article: function() {
-        $.getScript((document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js');
         $("[id='btnArticleDelete']").click(function() {
             var id = $(this).data('id');
             layer.confirm('确定删除该篇文章吗？', {
                 btn: ['确定', '点错了'],
                 icon: 3
             }, function(index) {
-                loading(true);
                 layer.close(index);
                 $.ajax({
                     url: '/admin/article/' + id,
@@ -103,7 +99,6 @@ var pageData = {
                 }).fail(function() {
                     resultError();
                 }).always(function() {
-                    loading(false);
                 });
             });
         });
@@ -150,7 +145,6 @@ var pageData = {
                 url += '/id';
             }
             $('#btnSubmit').button('loading');
-            loading(true);
             $.ajax({
                 url: url,
                 type: action == 'save' ? 'POST' : 'PUT',
@@ -177,7 +171,6 @@ var pageData = {
                 resultError();
             }).always(function() {
                 $('#btnSubmit').button('reset');
-                loading(false);
             });
             return false;
         });
@@ -200,9 +193,6 @@ function addCss(url) {
     });
 }
 
-function loading(show) {
-    $(".colorful_loading_frame").css("display", show ? 'block' : 'none');
-}
 // 侧边菜单开关
 function autoLeftNav() {
     $('.tpl-header-switch-button').on('click', function() {

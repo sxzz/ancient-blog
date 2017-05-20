@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>{$sub_title|default=""}{:config('db_data.BLOG_NAME')} | {:config('db_data.BLOG_SUBTITLE')}</title>
+    <title>{block name="sub_title"}{/block}{:config('db_data.BLOG_NAME')} - {:config('db_data.BLOG_SUBTITLE')}</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="renderer" content="webkit">
@@ -12,17 +12,10 @@
     <meta http-equiv="Cache-Control" content="no-siteapp" />
     <link rel="icon" type="image/png" href="/favicon.ico">
     <meta name="apple-mobile-web-app-title" content="{:config('db_data.BLOG_NAME')}" />
-    <link rel="stylesheet" href="//cdn.amazeui.org/amazeui/2.7.2/css/amazeui.min.css" />
+    <!-- CSS -->
+    <link href="http://cdn.bootcss.com/amazeui/2.7.2/css/amazeui.min.css" rel="stylesheet">
     <link href="__CSS__/index.css" rel="stylesheet">
-    <!--[if (gte IE 9)|!(IE)]><!-->
-    <script src="//cdn.bootcss.com/jquery/2.2.3/jquery.min.js"></script>
-    <!--<![endif]-->
-    <!--[if lte IE 8 ]>
-        <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
-        <script src="//cdn.bootcss.com/modernizr/2.8.3/modernizr.min.js"></script>
-        <script src="//cdn.amazeui.org/amazeui/2.7.2/js/amazeui.ie8polyfill.min.js"></script>
-    <![endif]-->
-    <script src="//cdn.amazeui.org/amazeui/2.7.2/js/amazeui.min.js"></script>
+    {block name="css"}{/block}
 </head>
 
 <body>
@@ -41,7 +34,7 @@
                 <span class="am-sr-only">导航切换</span> <span class="am-icon-bars"></span>
             </button>
             <div class="am-collapse am-topbar-collapse" id="topbar-collapse">
-                <ul class="am-nav am-nav-pills am-topbar-nav font-thin">
+                <ul class="am-nav am-nav-pills am-topbar-nav">
                     <!-- 导航条项开始 -->
                     <li class="am-active"><a href="/" title="首页">首页</a></li>
                     <!-- 导航条项结束 -->
@@ -58,19 +51,17 @@
         </div>
     </header>
     <div class="am-g am-g-fixed blog-g-fixed">
-        <div class="am-u-md-9">
-            {__CONTENT__}
-        </div>
+        <div class="am-u-md-9">{block name="content"}{/block}</div>
         <div class="am-u-md-3 blog-sidebar">
             <section class="am-panel am-panel-secondary">
-                <div class="am-panel-hd"><i class="am-icon-info-circle font-thin">{:config('db_data.BLOG_STR_ABOUT')}</i></div>
-                <div class="am-panel-bd font-thin" style="font-size:13px;">
-                    <p>三咲智子，姓名不详，性别不详，会诸多编程语言(才怪嘞！)，苦逼学生党一枚~<br>搞IT，不搞基，博客仍在施工中~
-                    <a href="#" class="am-btn am-btn-secondary am-btn-sm am-fr am-radius am-icon-ellipsis-h" onclick="alert('Coding...');"> 更多</a></p>
+                <div class="am-panel-hd"><i class="am-icon-info-circle">{:config('db_data.BLOG_STR_ABOUT')}</i></div>
+                <div class="am-panel-bd" style="font-size:13px;">
+                    <p>三咲智子，姓名不详，性别 ♂，咸鱼党，<del>苦逼</del>学生党一枚<br>搞IT，不搞基，博客仍在施工中~
+                    <a href="#" class="am-btn am-btn-secondary am-btn-sm am-fr am-radius am-icon-ellipsis-h" onclick="alert('瞎点什么...');"> 更多</a></p>
                 </div>
             </section>
             <section class="am-panel am-panel-success">
-                <div class="am-panel-hd font-thin"><i class="am-icon-link">{:config('db_data.BLOG_STR_FRIENDLY_LINK')}</i></div>
+                <div class="am-panel-hd"><i class="am-icon-link">{:config('db_data.BLOG_STR_FRIENDLY_LINK')}</i></div>
                 <div class="am-panel-bd blog-links">
                     <ui class="am-avg-sm-1 am-avg-md-2">
                         <li><a class="am-btn am-btn-secondary am-radius" href="http://bbs.125.la/" target="_blank" title="精易论坛">精易论坛</a></li>
@@ -82,23 +73,27 @@
             </section>
         </div>
     </div>
-    <footer class="blog-footer">
-        <p>{:config('db_data.BLOG_NAME')}</p>
-        <p><small>Copyright &copy; {:get_domain()} 版权所有.</small></p>
-        {:config('db_data.BLOG_BUTTOM_CUSTOM_HTML')} 
-    </footer>
-    <script type="text/javascript">
-    var duoshuoQuery = {
-        short_name: "{:config('db_data.DUOSHUO_SHORT_NAME')}"
-    };
-    $(function() {
-        var ds = document.createElement('script');
-        ds.type = 'text/javascript';
-        ds.async = true;
-        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-        ds.charset = 'UTF-8';
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
 
+    <footer class="blog-footer">
+        <hr data-am-widget="divider" class="am-divider am-divider-dashed" />
+        <p>{:config('db_data.BLOG_NAME')}</p>
+        {:config('db_data.BLOG_BUTTOM_CUSTOM_HTML')} 
+        <p><small>由博客 <a href="https://www.sxzz.moe/" title="三咲智子" target="_blank" class="">三咲智子</a> 开发</small></p>
+    </footer>
+
+    <!--[if (gte IE 9)|!(IE)]><!-->
+    <script src="//cdn.bootcss.com/jquery/2.2.3/jquery.min.js"></script>
+    <!--<![endif]-->
+    <!--[if lte IE 8 ]>
+        <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+        <script src="//cdn.bootcss.com/modernizr/2.8.3/modernizr.min.js"></script>
+        <script src="//cdn.amazeui.org/amazeui/2.7.2/js/amazeui.ie8polyfill.min.js"></script>
+    <![endif]-->
+    <script src="http://cdn.bootcss.com/amazeui/2.7.2/js/amazeui.min.js"></script>
+    {block name="js"}{/block}
+    <script>
+    $(function() {
+        // 百度
         var bp = document.createElement('script');
         var curProtocol = window.location.protocol.split(':')[0];
         if (curProtocol === 'https') {
@@ -111,7 +106,7 @@
 
         var formSearch = $('#formSearch');
         formSearch.submit(function() {
-            alert('(ﾟДﾟ≡ﾟдﾟ)!? 什么！尼要搜索？俺还没有开发！');
+            alert('(ﾟДﾟ≡ﾟдﾟ)!? 就几篇文章，不用搜索哒！(才不是偷懒呢...)');
             return false;
         });
     });

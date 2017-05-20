@@ -11,6 +11,11 @@
 
 // 应用公共文件
 
+function get_lines($str, $start, $length)
+{
+    return implode("\n", array_slice(explode("\n", $str), $start, $length));
+}
+
 /**
  * 换行转p标签
  * @param  string $str
