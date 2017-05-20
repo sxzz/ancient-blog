@@ -26,6 +26,7 @@
                                             <th>分类</th>
                                             <th>查看数 / 评论数</th>
                                             <th>发表时间</th>
+                                            <th>最后修改时间</th>
                                             <th>操作</th>
                                         </tr>
                                     </thead>
@@ -37,8 +38,9 @@
                                                 <span class="am-badge am-badge-primary am-radius am-fr am-text-default">置顶</span> {/eq}
                                             </td>
                                             <td>N/A</td>
-                                            <td class="am-text-middle">{$v.views} / <span class="ds-thread-count" data-thread-key="{$v.id}"></span></td>
-                                            <td class="am-text-middle">{$v.time|date='Y-m-d H:i:s',###}</td>
+                                            <td class="am-text-middle">{$v.views} / NO</td>
+                                            <td class="am-text-middle">{$v.create_time | date='Y-m-d H:i:s', ###}</td>
+                                            <td class="am-text-middle">{$v.update_time | date='Y-m-d H:i:s', ###}</td>
                                             <td class="am-text-middle">
                                                 <div class="am-btn-group">
                                                     <a href="{:url('admin/article/edit',['id'=>$v['id']])}" class="am-btn am-btn-secondary am-btn-xs am-round am-icon-pencil"> 编辑</a>

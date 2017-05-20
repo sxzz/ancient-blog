@@ -98,8 +98,7 @@ var pageData = {
                     }
                 }).fail(function() {
                     resultError();
-                }).always(function() {
-                });
+                }).always(function() {});
             });
         });
     },
@@ -142,7 +141,7 @@ var pageData = {
             var action = $(this).data('action');
             var url = '/admin/article';
             if (action == 'update') {
-                url += '/id';
+                url += '/' + $("input[name='id']").val();
             }
             $('#btnSubmit').button('loading');
             $.ajax({
@@ -154,19 +153,44 @@ var pageData = {
                     alias: alias,
                 },
             }).done(function(result) {
-                if (result.status == 1) {
-                    if (action == 'save') {
-                        // 添加操作
+                if (action == 'save') {
+                    // 添加操作
+                    if (result.status == 1) {
                         layer.confirm('发布成功，是否打开文章看看？', {
                             icon: 1,
                             btn: ['是', '否'] //按钮
                         }, function(index) {
-                            var tempwindow = window.open();
-                            tempwindow.location = '/admin/article/' + result.id;
+                            viewArticle(result.id);
                             layer.close(index);
+                            location = "/admin/article"
+                        }, function(index) {
+                            layer.close(index);
+                            location = "/admin/article"
+                        });
+                    } else {
+                        layer.alert('发布失败，也许是你人品不好吧...', {
+                            icon: 2,
                         });
                     }
-                } else {}
+                } else {
+                    if (result.status == 1) {
+                        layer.confirm('编辑成功，是否打开文章看看？', {
+                            icon: 1,
+                            btn: ['是', '否'] //按钮
+                        }, function(index) {
+                            viewArticle(result.id);
+                            layer.close(index);
+                            location = "/admin/article"
+                        }, function(index) {
+                            layer.close(index);
+                            location = "/admin/article"
+                        });
+                    } else {
+                        layer.alert('编辑失败，也许是文章找不到了吧...', {
+                            icon: 2,
+                        });
+                    }
+                }
             }).fail(function() {
                 resultError();
             }).always(function() {
@@ -175,6 +199,11 @@ var pageData = {
             return false;
         });
     }
+}
+
+function viewArticle(id) {
+    var tempwindow = window.open();
+    tempwindow.location = '/admin/article/' + id;
 }
 // 服务器返回的数据错误
 function resultError() {
@@ -192,7 +221,6 @@ function addCss(url) {
         href: url,
     });
 }
-
 // 侧边菜单开关
 function autoLeftNav() {
     $('.tpl-header-switch-button').on('click', function() {

@@ -10,8 +10,8 @@
                 {eq name="v.top" value="1"}
                 <li><span class="am-badge am-badge-danger am-radius am-text-lg am-icon-level-up"> 置顶</span></li>
                 {/eq}
-                <li><i class="am-icon-calendar"> {$v.time|date='Y-m-d',###}</i></li>
-                <li><i class="am-icon-eye"> {$v.views}</i></li>
+                <li><i class="am-icon-calendar"> {$v.create_time | date='Y-m-d', ###}</i></li>
+                <li><i class="am-icon-eye"> {$v.views | round = -1} +</i></li>
                 <li><i class="am-icon-comments"> No</i></li>
             </div>
             <div class="blog-list-action am-hide-sm-only">

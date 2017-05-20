@@ -11,10 +11,13 @@
                     </div>
                     <div class="widget-body am-fr">
                         <form id="formEditArticle" class="am-form am-form-horizontal" data-action="{$action}">
+                            {eq name="action" value="update"}
+                            <input type="hidden" name="id" value="{$article.id}">
+                            {/eq}
                             <div class="am-form-group">
                                 <label for="inputTitle" class="am-u-sm-1 am-form-label">标题：</label>
                                 <div class="am-u-sm-11">
-                                    <input type="text" id="inputTitle" placeholder="请输入文章标题" required>
+                                    <input type="text" id="inputTitle" placeholder="请输入文章标题" required value="{$article.title|default=''}">
                                 </div>
                             </div>
                             <div class="am-form-group">
@@ -22,7 +25,7 @@
                                 <div class="am-u-sm-11">
                                     <div class="am-input-group">
                                         <span class="am-input-group-label">{:url('/article/', null, null, true)}</span>
-                                        <input type="text" id="inputAlias" placeholder="设置一个别名吧（可空）" class="am-form-field">
+                                        <input type="text" id="inputAlias" placeholder="设置一个别名吧（可空）" class="am-form-field" value="{$article.alias|default=''}">
                                     </div>
                                 </div>
                             </div>
@@ -30,7 +33,7 @@
                                 <label for="inputContent" class="am-u-sm-1 am-form-label">内容：</label>
                                 <div class="am-u-sm-11">
                                     <div id="editormdContent">
-                                        <textarea name="content" style="display:none;">{$markdown|default=''}</textarea>
+                                        <textarea name="content" style="display:none;">{$article.markdown|default=''}</textarea>
                                     </div>
                                 </div>
                             </div>

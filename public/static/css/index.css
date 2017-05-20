@@ -120,7 +120,10 @@ a {
 
 @media only screen and (max-width: 641px) {
     body {
-        background: url("http://ok9xcqpik.bkt.clouddn.com/background_zip.jpg") no-repeat #F9F9F9;
+        background: url("http://ok9xcqpik.bkt.clouddn.com/background_zip.jpg") no-repeat;
+        background-size: cover;
+        -moz-background-size: cover;
+        background-attachment: fixed;
     }
 }
 

@@ -40,7 +40,7 @@ class Article
         $markdown       = $request->post('markdown');
         $alias          = $request->post('alias');
         list($res, $id) = model('Article')->addArticle($title, $markdown, $alias);
-        return ['status' => $res ? '1' : '0', 'id' => $id];
+        return ['status' => $res ? 1 : 0, 'id' => $id];
     }
 
     /**
@@ -62,8 +62,8 @@ class Article
      */
     public function edit($id)
     {
-        $markdown = model('Article')->getArticleMarkdown($id);
-        return view(null, ['markdown' => $markdown, 'action' => 'update']);
+        $article = model('Article')->getArticle($id);
+        return view(null, ['article' => $article, 'action' => 'update']);
     }
 
     /**
@@ -75,7 +75,11 @@ class Article
      */
     public function update(Request $request, $id)
     {
-        //
+        $title    = $request->put('title');
+        $markdown = $request->put('markdown');
+        $alias    = $request->put('alias');
+        $res      = model('Article')->modArticle($id, $title, $markdown, $alias);
+        return ['status' => $res ? 1 : 0, 'id' => $id];
     }
 
     /**

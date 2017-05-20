@@ -5,7 +5,7 @@
             <a href="{:url('/article/' . $article['id'])}" title="{$article.title}">{$article.title}</a>
         </h1>
         <span class="article-meta">
-            <li><i class="am-icon-calendar"> {$article.time|date='Y-m-d',###}</i></li>
+            <li><i class="am-icon-calendar"> {$article.create_time | date='Y-m-d H:i:s', ###}</i></li>
             <li><i class="am-icon-eye"> {$article.views}</i></li>
             <li><i class="am-icon-commenting-o"> No</i>
         </li>
