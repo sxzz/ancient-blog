@@ -2,7 +2,7 @@
 <section class="am-panel am-panel-secondary">
     <div class="am-panel-bd">
         <h1 class="am-article-title article-title">
-            <a href="{:url('/article/' . $article['id'])}" title="{$article.title}">{$article.title}</a>
+            <a href="{$article.id | get_article_url = $article.alias}" title="{$article.title}">{$article.title}</a>
         </h1>
         <span class="article-meta">
             <li><i class="am-icon-calendar"> {$article.create_time | date='Y-m-d H:i:s', ###}</i></li>

@@ -51,7 +51,7 @@ class Article
      */
     public function read($id)
     {
-        return redirect('index/index/article', ['id' => $id]);
+        return redirect(get_article_url($id));
     }
 
     /**

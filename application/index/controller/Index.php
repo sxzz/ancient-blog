@@ -15,8 +15,10 @@ class Index extends \think\Controller
     public function article($id)
     {
         $modelArticle = model('Article');
-
-        $article = $modelArticle->getArticle($id);
+        $article      = $modelArticle->getArticleByAlias($id);
+        if (empty($article)) {
+            $article = $modelArticle->getArticle($id);
+        }
         $modelArticle->addViews($id);
         $this->assign('article', $article);
         return $this->fetch();

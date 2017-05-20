@@ -16,6 +16,10 @@ class Article extends Model
     {
         return $this->where('id', $id)->field(['id', 'title', 'create_time', 'markdown', 'views', 'alias'])->find();
     }
+    public function getArticleByAlias($alias)
+    {
+        return $this->where('alias', $alias)->field(['id', 'title', 'create_time', 'markdown', 'views', 'alias'])->find();
+    }
     public function addViews($id)
     {
         return $this->where('id', $id)->setInc('views', 1);
@@ -46,5 +50,9 @@ class Article extends Model
             'alias'    => $alias,
         ], ['id' => $id]);
         return $result !== false;
+    }
+    public function getAlias($id)
+    {
+        return $this->getFieldById($id, 'alias');
     }
 }

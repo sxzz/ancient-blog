@@ -11,6 +11,14 @@
 
 // 应用公共文件
 
+function get_article_url($id = null, $alias = null)
+{
+    if (!isset($alias)) {
+        $alias = model('Article')->getAlias($id);
+    }
+    return url('index/index/article', empty($alias) ? ['id' => $id] : ['id' => $alias]);
+}
+
 function get_lines($str, $start, $length)
 {
     return implode("\n", array_slice(explode("\n", $str), $start, $length));

@@ -1,6 +1,6 @@
 {extend name="base"} {block name="sub_title"}{/block} {block name="content"} {foreach name="articles" item="v"}
 <article class="am-panel am-panel-secondary blog-list-main">
-    <h3 class="am-article-title blog-list-title"><a href="{:url('index/index/article', ['id'=>$v['id']])}">{$v.title}</a></h3>
+    <h3 class="am-article-title blog-list-title"><a href="{$v.id | get_article_url = $v.alias}">{$v.title}</a></h3>
     <div class="am-g">
         <div class="am-u-sm-12">
             <div class="blog-list-content">
