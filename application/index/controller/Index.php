@@ -1,15 +1,19 @@
 <?php
 namespace app\index\controller;
 
-class Index extends \think\Controller
+class Index
 {
-    public function index()
+    public function index($page = 1)
     {
+        if ($page < 1) {
+            return redirect('/');
+        }
         $modelArticle = model('Article');
 
-        $articles = $modelArticle->getArticles(5);
-        $this->assign('articles', $articles);
-        return $this->fetch();
+        $articles = $modelArticle->getArticles($page, 5);
+        // halt($articles->hasPages());
+
+        return view(null, ['articles' => $articles, 'page' => $page]);
     }
 
     public function article($id)
@@ -19,8 +23,7 @@ class Index extends \think\Controller
         if (empty($article)) {
             $article = $modelArticle->getArticle($id);
         }
-        $modelArticle->addViews($id);
-        $this->assign('article', $article);
-        return $this->fetch();
+        $modelArticle->addViews($article->id);
+        return view(null, ['article' => $article]);
     }
 }

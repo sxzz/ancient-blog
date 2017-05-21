@@ -11,9 +11,10 @@ class Article
      *
      * @return \think\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $articles = model('Article')->getArticles(config('db_data.ADMIN_PAGE_NUM')); // 获取文章列表
+        $page     = $request->get('page', 1);
+        $articles = model('Article')->getArticles($page, 20); // 获取文章列表
 
         return view(null, ['articles' => $articles]);
     }

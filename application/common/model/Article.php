@@ -7,9 +7,9 @@ use think\Model;
 class Article extends Model
 {
     protected $autoWriteTimestamp = true;
-    public function getArticles($getNum)
+    public function getArticles($page, $itemNum)
     {
-        return $this->order(['top' => 'desc', 'create_time' => 'desc'])->limit($getNum)->select();
+        return $this->order(['top' => 'desc', 'create_time' => 'desc'])->paginate($itemNum, null, ['page' => $page]);
     }
 
     public function getArticle($id)
