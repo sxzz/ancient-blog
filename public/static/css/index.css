@@ -204,6 +204,8 @@ a {
     }
 }
 
-#ds-thread #ds-reset .ds-post-button, #ds-thread #ds-reset .ds-textarea-wrapper textarea {
-    font-family: "Segoe UI", "Lucida Grande", Helvetica, Arial, "Microsoft YaHei", FreeSans, Arimo, "Droid Sans", "wenquanyi micro hei", "Hiragino Sans GB", "Hiragino Sans GB W3", FontAwesome, sans-serif!important;
+.editormd-html-preview, .editormd-preview-container {
+    background-color: transparent;
+    padding: 0;
+    font-size: initial;
 }

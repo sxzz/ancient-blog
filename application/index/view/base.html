@@ -14,7 +14,9 @@
     <meta name="apple-mobile-web-app-title" content="{:config('db_data.BLOG_NAME')}" />
     <!-- CSS -->
     <link rel="stylesheet" href="__STATIC__/amazeui/css/amazeui.min.css">
-    <link rel="stylesheet" href="__CSS__/index.css"> {block name="css"}{/block}
+    <link rel="stylesheet" href="__STATIC__/editor.md/css/editormd.preview.min.css"> 
+    {block name="css"}{/block}
+    <link rel="stylesheet" href="__CSS__/index.css"> 
 </head>
 
 <body>
@@ -80,6 +82,7 @@
         <p><small>本博客由 <a href="https://www.sxzz.moe/" title="三咲智子" target="_blank">三咲智子</a> 开发</small></p>
     </footer>
     <script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+    <script src="__STATIC__/amazeui/js/amazeui.min.js"></script>
     {block name="js"}{/block}
     <script>
     $(function() {
