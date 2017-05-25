@@ -3,5 +3,4 @@ composer.lock
 *.log
 thinkphp
 runtime
-archive
 .debug

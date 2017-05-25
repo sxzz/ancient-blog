@@ -38,10 +38,14 @@ class Article
     public function save(Request $request)
     {
         $title          = $request->post('title');
+        $id             = substr(md5($title), 8, 16);
         $markdown       = $request->post('markdown');
-        $alias          = $request->post('alias');
-        list($res, $id) = model('Article')->addArticle($title, $markdown, $alias);
-        return ['status' => $res ? 1 : 0, 'id' => $id];
+        list($res, $id) = model('Article')->addArticle($id, $title, $markdown);
+        if ($res) {
+            return ['status' => 1, 'id' => $id];
+        } else {
+            return ['status' => 0, 'msg' => $id];
+        }
     }
 
     /**
@@ -52,7 +56,7 @@ class Article
      */
     public function read($id)
     {
-        return redirect(get_article_url($id));
+        return redirect(url('index/index/article', ['id' => $id]));
     }
 
     /**
@@ -78,8 +82,7 @@ class Article
     {
         $title    = $request->put('title');
         $markdown = $request->put('markdown');
-        $alias    = $request->put('alias');
-        $res      = model('Article')->modArticle($id, $title, $markdown, $alias);
+        $res      = model('Article')->modArticle($id, $title, $markdown);
         return ['status' => $res ? 1 : 0, 'id' => $id];
     }
 

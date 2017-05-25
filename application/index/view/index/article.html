@@ -1,16 +1,14 @@
-{extend name="base"} {block name="content"}
+{extend name="base"} {block name="sub_title"}{$article.title} - {/block} {block name="css"}
+<link rel="stylesheet" href="__STATIC__/editor.md/css/editormd.preview.min.css"> {/block} {block name="content"}
 <section class="am-panel am-panel-secondary">
     <div class="am-panel-bd">
-        <h1 class="am-article-title article-title">
-            <a href="{$article.id | get_article_url = $article.alias}" title="{$article.title}">{$article.title}</a>
-        </h1>
+        <h1 class="am-article-title article-title">{$article.title}</h1>
         <span class="article-meta">
             <li><i class="am-icon-calendar"> {$article.create_time | date='Y-m-d H:i:s', ###}</i></li>
             <li><i class="am-icon-eye"> {$article.views}</i></li>
-            <li><i class="am-icon-commenting-o"> No</i>
-        </li>
-        <hr>
+            <li><i class="am-icon-commenting-o"> No</i></li>
         </span>
+        <hr data-am-widget="divider" class="am-divider am-divider-dashed am-no-layout">
         <div class="article-content" id="viewContent">
             <textarea style="display:none;">{$article.markdown}</textarea>
         </div>
@@ -24,7 +22,7 @@
 <script src="__STATIC__/editor.md/lib/sequence-diagram.min.js"></script>
 <script src="__STATIC__/editor.md/lib/flowchart.min.js"></script>
 <script src="__STATIC__/editor.md/lib/jquery.flowchart.min.js"></script>
-<script src="__STATIC__/editor.md/editormd.min.js"></script>
+<script src="__STATIC__/editor.md/editormd.min.js"></script>    
 <script>
 $(function() {
     article_links = $('.article-content a');
@@ -34,9 +32,9 @@ $(function() {
             el.attr("target", "_blank");
         }
     });
-    
+
     editormd.emoji = {
-            path: "__STATIC__/editor.md/emojis/",
+            path: "/static/editor.md/emojis/",
             ext: ".png"
         },
         editormd.twemoji = {

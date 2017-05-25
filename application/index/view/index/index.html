@@ -1,7 +1,9 @@
 {extend name="base"} {block name="sub_title"}{/block} {block name="css"}
 <link href="__CSS__/amazeui.page.css" rel="stylesheet"> {/block} {block name="content"} {foreach name="articles" item="v"}
 <article class="am-panel am-panel-secondary blog-list-main">
-    <h3 class="am-article-title blog-list-title"><a href="{$v.id | get_article_url = $v.alias}">{$v.title}</a></h3>
+    <h3 class="am-article-title blog-list-title">
+        <a href="{:url('index/index/article', ['id' => $v['id']])}">{$v.title}</a>
+    </h3>
     <div class="am-g">
         <div class="am-u-sm-12">
             <div class="blog-list-content">
@@ -22,6 +24,7 @@
     </div>
 </article>
 {/foreach}
+{gt name="articles->lastPage()" value="1"}
 <ul class="am-pagination am-pagination-centered" data-page="{$articles->currentPage()}">
     {gt name="articles->currentPage()" value="1"}<li><a href="{:url('/',['p' => $page - 1])}"><i class="am-icon-angle-left"></i></a></li>{/gt}
     <li><span>第 {$articles->currentPage()} 页/共 {$articles->lastPage()} 页</span></li>
@@ -29,8 +32,8 @@
         <li><a href="{:url('/',['p' => $page + 1])}"><i class="am-icon-angle-right"></i></a></li>
     {/if}
 </ul>
+{/gt}
 {/block} {block name="js"}
-<script src="__JS__/amazeui.page.js"></script>
 <script src="__STATIC__/editor.md/lib/marked.min.js"></script>
 <script src="__STATIC__/editor.md/lib/prettify.min.js"></script>
 <script src="__STATIC__/editor.md/lib/raphael.min.js"></script>

@@ -10,6 +10,7 @@
 // +----------------------------------------------------------------------
 use think\Route;
 
+Route::get('/', 'index/index/index'); // 首页
 Route::get('/p/:page', 'index/index/index'); // 首页分页路由
-Route::get('/article/:id', 'index/index/article'); // 添加文章路由
+Route::get('/a/:id', 'index/index/article'); // 查看文章路由
 Route::resource('/admin/article', 'admin/article'); // 添加后台文章资源路由

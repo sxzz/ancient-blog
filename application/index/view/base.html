@@ -13,9 +13,8 @@
     <link rel="icon" type="image/png" href="/favicon.ico">
     <meta name="apple-mobile-web-app-title" content="{:config('db_data.BLOG_NAME')}" />
     <!-- CSS -->
-    <link href="http://cdn.bootcss.com/amazeui/2.7.2/css/amazeui.min.css" rel="stylesheet">
-    <link href="__CSS__/index.css" rel="stylesheet">
-    {block name="css"}{/block}
+    <link rel="stylesheet" href="__STATIC__/amazeui/css/amazeui.min.css">
+    <link rel="stylesheet" href="__CSS__/index.css"> {block name="css"}{/block}
 </head>
 
 <body>
@@ -56,40 +55,31 @@
             <section class="am-panel am-panel-secondary">
                 <div class="am-panel-hd"><i class="am-icon-info-circle">{:config('db_data.BLOG_STR_ABOUT')}</i></div>
                 <div class="am-panel-bd" style="font-size:13px;">
-                    <p>三咲智子，姓名不详，性别 ♂，咸鱼党，<del>苦逼</del>学生党一枚<br>搞IT，不搞基，博客仍在施工中~
-                    <a href="#" class="am-btn am-btn-secondary am-btn-sm am-fr am-radius am-icon-ellipsis-h" onclick="alert('瞎点什么...');"> 更多</a></p>
+                    <p>三咲智子，姓名不详，性别 ♂，咸鱼党，
+                        <del>苦逼</del>学生党一枚
+                        <br>搞IT，不搞基，博客仍在施工中~</p>
+                    <p class="am-text-right"><a href="#" class="am-btn am-btn-secondary am-btn-sm am-radius am-icon-ellipsis-h" onclick="alert('瞎点什么...');"> 更多</a></p>
                 </div>
             </section>
             <section class="am-panel am-panel-success">
                 <div class="am-panel-hd"><i class="am-icon-link">{:config('db_data.BLOG_STR_FRIENDLY_LINK')}</i></div>
                 <div class="am-panel-bd blog-links">
-                    <ui class="am-avg-sm-1 am-avg-md-2">
-                        <li><a class="am-btn am-btn-secondary am-radius" href="http://bbs.125.la/" target="_blank" title="精易论坛">精易论坛</a></li>
-                        <li><a class="am-btn am-btn-secondary am-radius" href="http://sxyz.blog/" target="_blank" title="三咲亚子">三咲亚子</a></li>
-                        <li><a class="am-btn am-btn-secondary am-radius" href="http://www.loadfield.com/" target="_blank" title="负荷领域">负荷领域</a></li>
-                        <li><a class="am-btn am-btn-secondary am-radius" href="http://www.bilibili.com/" target="_blank" title="哔哩哔哩">B站</a></li>
-                    </ui>
+                    <ul class="am-avg-sm-1 am-avg-md-2">
+                        <li><a class="am-btn am-btn-secondary am-radius" href="http://bbs.125.la/" target="_blank" title="专业易语言编程学习交流论坛">精易论坛</a></li>
+                        <li><a class="am-btn am-btn-secondary am-radius" href="http://sxyz.blog/" target="_blank" title="大佬">三咲亚子</a></li>
+                        <li><a class="am-btn am-btn-secondary am-radius" href="http://www.loadfield.com/" target="_blank" title="女装大佬">负荷领域</a></li>
+                        <li><a class="am-btn am-btn-secondary am-radius" href="http://www.bilibili.com/" target="_blank" title="哔哩哔哩 (゜-゜)つロ 干杯~">B站</a></li>
+                    </ul>
                 </div>
             </section>
         </div>
     </div>
-
     <footer class="blog-footer">
         <hr data-am-widget="divider" class="am-divider am-divider-dashed" />
-        <p>{:config('db_data.BLOG_NAME')}</p>
-        {:config('db_data.BLOG_BUTTOM_CUSTOM_HTML')} 
-        <p><small>由博客 <a href="https://www.sxzz.moe/" title="三咲智子" target="_blank" class="">三咲智子</a> 开发</small></p>
+        {:config('db_data.BLOG_BUTTOM_CUSTOM_HTML')}
+        <p><small>本博客由 <a href="https://www.sxzz.moe/" title="三咲智子" target="_blank">三咲智子</a> 开发</small></p>
     </footer>
-
-    <!--[if (gte IE 9)|!(IE)]><!-->
-    <script src="//cdn.bootcss.com/jquery/2.2.3/jquery.min.js"></script>
-    <!--<![endif]-->
-    <!--[if lte IE 8 ]>
-        <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
-        <script src="//cdn.bootcss.com/modernizr/2.8.3/modernizr.min.js"></script>
-        <script src="//cdn.amazeui.org/amazeui/2.7.2/js/amazeui.ie8polyfill.min.js"></script>
-    <![endif]-->
-    <script src="http://cdn.bootcss.com/amazeui/2.7.2/js/amazeui.min.js"></script>
+    <script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
     {block name="js"}{/block}
     <script>
     $(function() {
@@ -108,6 +98,14 @@
         formSearch.submit(function() {
             alert('(ﾟДﾟ≡ﾟдﾟ)!? 就几篇文章，不用搜索哒！(才不是偷懒呢...)');
             return false;
+        });
+
+        $('.blog-links a').each(function(index, el) {
+            $(el).popover({
+                content: $(el).attr('title'),
+                trigger: 'hover focus',
+                theme: 'sm'
+            })
         });
     });
     </script>

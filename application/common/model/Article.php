@@ -14,11 +14,7 @@ class Article extends Model
 
     public function getArticle($id)
     {
-        return $this->where('id', $id)->field(['id', 'title', 'create_time', 'markdown', 'views', 'alias'])->find();
-    }
-    public function getArticleByAlias($alias)
-    {
-        return $this->where('alias', $alias)->field(['id', 'title', 'create_time', 'markdown', 'views', 'alias'])->find();
+        return $this->where('id', $id)->field(['id', 'title', 'create_time', 'markdown', 'views'])->find();
     }
     public function addViews($id)
     {
@@ -28,31 +24,26 @@ class Article extends Model
     {
         return $this->where('id', $id)->delete() > 0;
     }
-    public function addArticle($title, $markdown, $alias)
+    public function addArticle($id, $title, $markdown)
     {
-        $result = $this->data([
+        $result = $this->validate(true)->save([
+            'id'       => $id,
             'title'    => $title,
             'markdown' => $markdown,
-            'alias'    => $alias,
-        ])->save();
+        ]);
         if ($result !== false) {
             return [true, $this->id];
         } else {
-            return [false];
+            return [false, $this->getError()];
         }
     }
-    public function modArticle($id, $title, $markdown, $alias)
+    public function modArticle($id, $title, $markdown)
     {
         $this->isUpdate(true);
         $result = $this->save([
             'title'    => $title,
             'markdown' => $markdown,
-            'alias'    => $alias,
         ], ['id' => $id]);
         return $result !== false;
-    }
-    public function getAlias($id)
-    {
-        return $this->getFieldById($id, 'alias');
     }
 }

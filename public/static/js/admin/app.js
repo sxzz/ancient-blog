@@ -207,7 +207,7 @@ function viewArticle(id) {
 }
 // 服务器返回的数据错误
 function resultError() {
-    layer.alert("喵~ 尼的人品有问题，请反省！(服务器繁忙)", {
+    layer.alert("喵~ 尼的人品有问题，请反省！(请查看你的服务器有木有毛病 或 联系开发者)", {
         icon: 2,
     });
 }

@@ -11,17 +11,15 @@ class Index
         $modelArticle = model('Article');
 
         $articles = $modelArticle->getArticles($page, 5);
-        // halt($articles->hasPages());
-
         return view(null, ['articles' => $articles, 'page' => $page]);
     }
 
     public function article($id)
     {
         $modelArticle = model('Article');
-        $article      = $modelArticle->getArticleByAlias($id);
+        $article      = $modelArticle->getArticle($id);
         if (empty($article)) {
-            $article = $modelArticle->getArticle($id);
+            return "<script>alert('文章不存在！');location='/'</script>";
         }
         $modelArticle->addViews($article->id);
         return view(null, ['article' => $article]);
