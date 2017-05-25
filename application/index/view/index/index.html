@@ -27,7 +27,7 @@
 {gt name="articles->lastPage()" value="1"}
 <ul class="am-pagination am-pagination-centered" data-page="{$articles->currentPage()}">
     {gt name="articles->currentPage()" value="1"}<li><a href="{:url('/',['p' => $page - 1])}"><i class="am-icon-angle-left"></i></a></li>{/gt}
-    <li><span>第 {$articles->currentPage()} 页/共 {$articles->lastPage()} 页</span></li>
+    <li><span>第 <b>{$articles->currentPage()}</b> 页 / 共 <b>{$articles->lastPage()}</b> 页</span></li>
     {if condition="$articles->currentPage() < $articles->lastPage()"}
         <li><a href="{:url('/',['p' => $page + 1])}"><i class="am-icon-angle-right"></i></a></li>
     {/if}

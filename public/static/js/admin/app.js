@@ -44,6 +44,7 @@ var pageData = {
             $.ajax({
                 url: '/admin/login/ajax_login',
                 type: 'POST',
+                dataType: 'json',
                 data: {
                     account: $('#inputAccount').val(),
                     pwd: $('#inputPwd').val(),
@@ -83,6 +84,7 @@ var pageData = {
                 layer.close(index);
                 $.ajax({
                     url: '/admin/article/' + id,
+                    dataType: 'json',
                     type: 'DELETE',
                 }).done(function(result) {
                     if (result.status == 1) {
@@ -132,8 +134,14 @@ var pageData = {
             var title = $('#inputTitle').val();
             var markdown = articleEditor.getMarkdown();
             var alias = $('#inputAlias').val();
-            if (markdown.length == 0) {
-                layer.alert('尼还木有写内容呢！', {
+            if (title.trim().length == 0) {
+                layer.alert('尼还木有写标题呢，写上标题再发吧！', {
+                    icon: 0,
+                });
+                return false;
+            }
+            if (markdown.trim().length == 0) {
+                layer.alert('尼还木有写内容呢，写点再发粗去吧！', {
                     icon: 0,
                 });
                 return false;
@@ -147,6 +155,7 @@ var pageData = {
             $.ajax({
                 url: url,
                 type: action == 'save' ? 'POST' : 'PUT',
+                dataType: 'json',
                 data: {
                     title: title,
                     markdown: markdown,
@@ -168,7 +177,7 @@ var pageData = {
                             location = "/admin/article"
                         });
                     } else {
-                        layer.alert('发布失败，也许是你人品不好吧...', {
+                        layer.alert('发布失败，' + result.msg, {
                             icon: 2,
                         });
                     }
