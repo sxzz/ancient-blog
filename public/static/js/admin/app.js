@@ -189,10 +189,6 @@ var pageData = {
                         }, function(index) {
                             viewArticle(result.id);
                             layer.close(index);
-                            location = "/admin/article"
-                        }, function(index) {
-                            layer.close(index);
-                            location = "/admin/article"
                         });
                     } else {
                         layer.alert('编辑失败，也许是文章找不到了吧...', {
