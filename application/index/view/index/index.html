@@ -14,11 +14,11 @@
                 <li><span class="am-badge am-badge-danger am-radius am-text-lg am-icon-level-up"> 置顶</span></li>
                 {/eq}
                 <li><i class="am-icon-calendar"> {$v.create_time | date='Y-m-d', ###}</i></li>
-                <li><i class="am-icon-eye"> {$v.views | round = -1} +</i></li>
+                <li><i class="am-icon-eye"> {$v.views}</i></li>
                 <li><i class="am-icon-comments"> No</i></li>
             </div>
             <div class="blog-list-action am-hide-sm-only">
-                <a href="{:url('/article/' . $v['id'])}" class="am-btn am-btn-secondary am-fr am-btn-sm blog-list-read-more am-icon-ellipsis-h"> 阅读全文</a>
+                <a href="{:url('index/index/article', ['id' => $v['id']])}" class="am-btn am-btn-secondary am-fr am-btn-sm blog-list-read-more am-icon-ellipsis-h"> 阅读全文</a>
             </div>
         </div>
     </div>
@@ -26,10 +26,10 @@
 {/foreach}
 {gt name="articles->lastPage()" value="1"}
 <ul class="am-pagination am-pagination-centered" data-page="{$articles->currentPage()}">
-    {gt name="articles->currentPage()" value="1"}<li><a href="{:url('/',['p' => $page - 1])}"><i class="am-icon-angle-left"></i></a></li>{/gt}
+    {gt name="articles->currentPage()" value="1"}<li><a href="{:url('/',['page' => $page - 1])}"><i class="am-icon-angle-left"></i></a></li>{/gt}
     <li><span>第 <b>{$articles->currentPage()}</b> 页 / 共 <b>{$articles->lastPage()}</b> 页</span></li>
     {if condition="$articles->currentPage() < $articles->lastPage()"}
-        <li><a href="{:url('/',['p' => $page + 1])}"><i class="am-icon-angle-right"></i></a></li>
+        <li><a href="{:url('/',['page' => $page + 1])}"><i class="am-icon-angle-right"></i></a></li>
     {/if}
 </ul>
 {/gt}
