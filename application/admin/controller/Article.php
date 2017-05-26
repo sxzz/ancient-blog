@@ -13,9 +13,11 @@ class Article
      */
     public function index(Request $request)
     {
-        $page     = $request->get('page', 1);
+        $page     = $request->get('p', 1);
         $articles = model('Article')->getArticles($page, 20); // 获取文章列表
-
+        if ($articles->lastPage() < $page) {
+            return redirect('admin/article/index');
+        }
         return view(null, ['articles' => $articles]);
     }
 

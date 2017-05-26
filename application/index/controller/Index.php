@@ -11,7 +11,7 @@ class Index
         $modelArticle = model('Article');
 
         $articles = $modelArticle->getArticles($page, 5);
-        return view(null, ['articles' => $articles, 'page' => $page]);
+        return view(null, ['articles' => $articles]);
     }
 
     public function article($id)

@@ -103,6 +103,26 @@ var pageData = {
                 }).always(function() {});
             });
         });
+        var page = $("#page");
+        var current = page.data('current');
+        var pages = page.data('pages');
+        var jump = page.data('jump');
+        first = current <= 1 ? null : '<i class="am-icon-angle-double-left"></i>';
+        last = current >= pages ? null : '<i class="am-icon-angle-double-right"></i>';
+        page.page({
+            curr: current,
+            pages: pages,
+            theme: 'primary',
+            jump: jump + '%page%',
+            prev: '<i class="am-icon-angle-left"></i>',
+            next: '<i class="am-icon-angle-right"></i>',
+            first: first,
+            last: last,
+            after: function(context, next) {
+                context.$element.addClass('tpl-pagination');
+                next();
+            }
+        });
     },
     articleEdit: function() {
         editormd.emoji = {
