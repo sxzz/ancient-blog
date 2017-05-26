@@ -12,7 +12,7 @@
     <!-- <link rel="apple-touch-icon-precomposed" href="assets/i/app-icon72x72@2x.png"> -->
     <meta content="博客后台管理" name="apple-mobile-web-app-title" />
     <link rel="stylesheet" href="//cdn.amazeui.org/amazeui/2.7.2/css/amazeui.min.css">
-    <link rel="stylesheet" href="__CSS__/admin/app.css"> {block name="css"} {/block}
+     {block name="css"} {/block}<link rel="stylesheet" href="__CSS__/admin/app.css">
 </head>
 
 <body data-type="{block name='dataType'}{/block}">
@@ -64,7 +64,7 @@
             <div class="tpl-sidebar-user-panel">
                 <div class="tpl-user-panel-slide-toggleable am-text-center">
                     <div class="tpl-user-panel-profile-picture">
-                        <img class="am-circle" alt="头像" src="/static/img/head.jpg"></img>
+                        <img class="am-circle" alt="头像" src="/static/img/head.png"></img>
                     </div>
                     <span class="user-panel-logged-in-text">
                         <i class="am-icon-circle-o am-text-success tpl-user-panel-status-icon"></i> {:config('db_data.ADMIN_ACCOUNT')}
