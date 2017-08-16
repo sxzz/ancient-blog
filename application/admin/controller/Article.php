@@ -15,7 +15,7 @@ class Article
     {
         $page     = $request->get('p', 1);
         $articles = model('Article')->getArticles($page, 20); // 获取文章列表
-        if ($articles->lastPage() < $page) {
+        if ($articles->lastPage() > 0 && $articles->lastPage() < $page) {
             return redirect('admin/article/index');
         }
         return view(null, ['articles' => $articles]);

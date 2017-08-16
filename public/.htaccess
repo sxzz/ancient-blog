@@ -4,9 +4,9 @@
 
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteRule ^(.*)$ index.php/$1 [QSA,PT,L]
+    RewriteRule ^(.*)$ index.php?/$1 [QSA,PT,L]
 
     #强制重定向到www
-    RewriteCond %{HTTP_HOST} ^sxzz.com [NC]
-    RewriteRule ^(.*)$ http://www.sxzz.com/$1 [L,R=301]
+    #RewriteCond %{HTTP_HOST} ^sxzz.com [NC]
+    #RewriteRule ^(.*)$ http://www.sxzz.com/$1 [L,R=301]
 </IfModule>
