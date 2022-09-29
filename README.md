@@ -1,6 +1,9 @@
 # 介绍
 个人的博客系统，功能目前尚未完成，本人时间比较少，慢慢写... ╮(╯_╰)╭
 
+<img width="1513" alt="image" src="https://user-images.githubusercontent.com/6481596/193034952-a7923c82-b425-40f0-93a6-6d8a9f788fca.png">
+
+
 基于 `ThinkPHP 5.0` 框架开发。
 
 本博客遵循`Apache2`开源协议发布，并提供免费使用。
